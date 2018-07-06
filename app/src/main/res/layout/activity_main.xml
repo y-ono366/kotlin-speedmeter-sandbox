@@ -7,20 +7,11 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/text_view"
+        android:id="@+id/hour_speed"
         android:layout_width="291dp"
         android:layout_height="101dp"
-        android:text="sorena"
         android:textSize="50dp"
         tools:layout_editor_absoluteX="60dp"
         tools:layout_editor_absoluteY="69dp" />
-
-    <TextView
-        android:id="@+id/user_name_view"
-        android:layout_width="126dp"
-        android:layout_height="61dp"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="117dp"
-        tools:layout_editor_absoluteY="350dp" />
 
 </android.support.constraint.ConstraintLayout>
