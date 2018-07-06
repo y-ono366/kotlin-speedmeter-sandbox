@@ -3,11 +3,10 @@ package systems.ohno.h_money
 
 import android.widget.FrameLayout
 import android.content.Context
-import android.provider.MediaStore
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.TextView
-import systems.ohno.h_money.Model.ArrText
+import systems.ohno.h_money.model.ArrText
 
 
 class topView: FrameLayout{

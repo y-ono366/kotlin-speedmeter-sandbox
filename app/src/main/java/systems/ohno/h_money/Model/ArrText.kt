@@ -1,4 +1,4 @@
-package systems.ohno.h_money.Model
+package systems.ohno.h_money.model
 
 
 data class ArrText (
