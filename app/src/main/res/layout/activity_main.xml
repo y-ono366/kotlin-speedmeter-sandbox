@@ -20,20 +20,20 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/oneHundBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="96dp"
         android:layout_marginTop="172dp"
         android:text="100"
-        app:layout_constraintEnd_toStartOf="@+id/button6"
+        app:layout_constraintEnd_toStartOf="@+id/fiveHundBtn"
         app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hour_speed" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/fiveHundBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="100dp"
@@ -43,19 +43,19 @@
         app:layout_constraintTop_toBottomOf="@+id/hour_speed" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/thousandBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="96dp"
         android:layout_marginTop="236dp"
         android:text="1000"
-        app:layout_constraintEnd_toStartOf="@+id/button8"
+        app:layout_constraintEnd_toStartOf="@+id/fiveThousandBtn"
         app:layout_constraintHorizontal_bias="0.41"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hour_speed" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/fiveThousandBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="100dp"
@@ -72,7 +72,7 @@
         android:layout_marginTop="20dp"
         android:text="10000"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button7" />
+        app:layout_constraintTop_toBottomOf="@+id/thousandBtn" />
 
     <Button
         android:id="@+id/button10"
@@ -85,6 +85,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.115"
         app:layout_constraintStart_toEndOf="@+id/button9"
-        app:layout_constraintTop_toBottomOf="@+id/button8" />
+        app:layout_constraintTop_toBottomOf="@+id/fiveThousandBtn" />
 
 </android.support.constraint.ConstraintLayout>
