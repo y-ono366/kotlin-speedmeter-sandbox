@@ -2,16 +2,10 @@ package systems.ohno.h_money
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main.*
 import systems.ohno.h_money.model.Speed
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import java.util.Calendar
 import java.text.SimpleDateFormat
-import android.view.View
 import android.widget.Button
-import android.widget.Toast
-import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,7 +53,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun  HourCalculation(speed:Long): Long {
-        var beforeDate = "2018-07-15"
+        var beforeDate = "2018-06-15"
 
         var diffDate =getDiffDay(beforeDate)
 
