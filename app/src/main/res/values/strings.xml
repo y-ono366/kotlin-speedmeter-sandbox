@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">h_money</string>
+    <string name="title_activity_setting">SettingActivity</string>
 </resources>

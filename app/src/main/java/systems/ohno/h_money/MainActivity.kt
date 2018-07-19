@@ -1,5 +1,6 @@
 package systems.ohno.h_money
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import systems.ohno.h_money.model.Speed
@@ -39,6 +40,13 @@ class MainActivity : AppCompatActivity() {
         val fiveThousandBtn: Button = findViewById(R.id.fiveThousandBtn)
         fiveThousandBtn.setOnClickListener {
             viewer.setText(Speed(HourCalculation(resave(5000))))
+        }
+
+
+        val settingActivityBtn:Button = findViewById(R.id.settingActivityBtn)
+        settingActivityBtn.setOnClickListener {
+            val settingIntent = Intent(this, SettingActivity::class.java)
+            startActivity(settingIntent)
         }
 
     }
