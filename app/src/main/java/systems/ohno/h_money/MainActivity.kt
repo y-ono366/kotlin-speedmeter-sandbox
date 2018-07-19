@@ -13,8 +13,25 @@ class MainActivity : AppCompatActivity() {
         super<AppCompatActivity>.onCreate(savedInstanceState)
 
         val prefs = getSharedPreferences("HMONEY_FILE", AppCompatActivity.MODE_PRIVATE)
-
+        var resetFlg = prefs.getInt("resetFlg",0)
         var total = prefs.getLong("total",0)
+        var payDay = prefs.getInt("payDay",1)
+
+        val nowDate = Calendar.getInstance()
+        val format = SimpleDateFormat("dd")
+        val nowDay = format.format(nowDate.getTime())
+        if(payDay < nowDay.toInt() && resetFlg == 1) {
+            val editor = prefs.edit()
+            editor.putInt("resetFlg",0)
+            editor.commit()
+        }
+        if(payDay == nowDay.toInt() && resetFlg == 0) {
+            val editor = prefs.edit()
+            editor.putInt("resetFlg",1)
+            editor.putLong("total",0)
+            editor.commit()
+        }
+
         var hour_speed = HourCalculation(total)
         var viewer  = topView(applicationContext)
 
@@ -61,7 +78,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun  HourCalculation(speed:Long): Long {
-        var beforeDate = "2018-06-15"
+        val prefs = getSharedPreferences("HMONEY_FILE", AppCompatActivity.MODE_PRIVATE)
+        var prefPayDay = prefs.getInt("payDay",1)
+
+        val calendar = Calendar.getInstance()
+        calendar.add(Calendar.MONTH, -1)
+        val format = SimpleDateFormat("yyyy-MM-")
+        val beforeDate = format.format(calendar.getTime())+prefPayDay.toString()
 
         var diffDate =getDiffDay(beforeDate)
 

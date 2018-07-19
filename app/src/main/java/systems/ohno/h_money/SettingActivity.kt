@@ -25,7 +25,7 @@ class SettingActivity : AppCompatActivity() {
 
         val prefs = getSharedPreferences("HMONEY_FILE", AppCompatActivity.MODE_PRIVATE)
         var prefAmount = prefs.getInt("amount",0)
-        var prefPayDay = prefs.getInt("payDay",0)
+        var prefPayDay = prefs.getInt("payDay",1)
 
         payDay.setText(prefPayDay.toString())
         amount.setText(prefAmount.toString())
