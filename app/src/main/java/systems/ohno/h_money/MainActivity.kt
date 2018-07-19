@@ -28,34 +28,41 @@ class MainActivity : AppCompatActivity() {
 
         val oneHundBtn: Button = findViewById(R.id.oneHundBtn)
         oneHundBtn.setOnClickListener {
-            viewer.setText(Speed(HourCalculation(resave(100))))
+            var newTotal = prefs.getLong("total",0) + 100
+            val editor = prefs.edit()
+            editor.putLong("total",newTotal)
+            editor.commit()
+            viewer.setText(Speed(HourCalculation(newTotal)))
         }
 
 
         val fiveHundBtn: Button = findViewById(R.id.fiveHundBtn)
         fiveHundBtn.setOnClickListener {
-            viewer.setText(Speed(HourCalculation(resave(500))))
+            var newTotal = prefs.getLong("total",0) + 500
+            val editor = prefs.edit()
+            editor.putLong("total",newTotal)
+            editor.commit()
+            viewer.setText(Speed(HourCalculation(newTotal)))
         }
 
         val thousandBtn: Button = findViewById(R.id.thousandBtn)
         thousandBtn.setOnClickListener {
-            viewer.setText(Speed(HourCalculation(resave(1000))))
+            var newTotal = prefs.getLong("total",0) + 1000
+            val editor = prefs.edit()
+            editor.putLong("total",newTotal)
+            editor.commit()
+            viewer.setText(Speed(HourCalculation(newTotal)))
         }
 
         val fiveThousandBtn: Button = findViewById(R.id.fiveThousandBtn)
         fiveThousandBtn.setOnClickListener {
-            viewer.setText(Speed(HourCalculation(resave(5000))))
+            var newTotal = prefs.getLong("total",0) + 5000
+            val editor = prefs.edit()
+            editor.putLong("total",newTotal)
+            editor.commit()
+            viewer.setText(Speed(HourCalculation(newTotal)))
         }
 
-    }
-
-    fun resave (money:Long):Long {
-        val prefs = getSharedPreferences("HMONEY_FILE", AppCompatActivity.MODE_PRIVATE)
-        var newTotal = prefs.getLong("total",0) + money
-        val editor = prefs.edit()
-        editor.putLong("total",newTotal)
-        editor.commit()
-        return newTotal
     }
 
     fun  HourCalculation(speed:Long): Long {
