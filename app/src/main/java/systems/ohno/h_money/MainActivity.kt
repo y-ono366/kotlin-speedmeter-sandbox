@@ -1,18 +1,18 @@
 package systems.ohno.h_money
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import android.app.Activity
 import android.os.Bundle
 import systems.ohno.h_money.model.Speed
 import java.util.Calendar
 import java.text.SimpleDateFormat
 import android.widget.Button
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        super<AppCompatActivity>.onCreate(savedInstanceState)
+        super<Activity>.onCreate(savedInstanceState)
 
-        val prefs = getSharedPreferences("HMONEY_FILE", AppCompatActivity.MODE_PRIVATE)
+        val prefs = getSharedPreferences("HMONEY_FILE", Activity.MODE_PRIVATE)
         var resetFlg = prefs.getInt("resetFlg",0)
         var total = prefs.getLong("total",0)
         var payDay = prefs.getInt("payDay",1)
@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun resave (money:Long):Long {
-        val prefs = getSharedPreferences("HMONEY_FILE", AppCompatActivity.MODE_PRIVATE)
+        val prefs = getSharedPreferences("HMONEY_FILE", Activity.MODE_PRIVATE)
         var newTotal = prefs.getLong("total",0) + money
         val editor = prefs.edit()
         editor.putLong("total",newTotal)
@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun  HourCalculation(speed:Long): Long {
-        val prefs = getSharedPreferences("HMONEY_FILE", AppCompatActivity.MODE_PRIVATE)
+        val prefs = getSharedPreferences("HMONEY_FILE", Activity.MODE_PRIVATE)
         var prefPayDay = prefs.getInt("payDay",1)
 
         val calendar = Calendar.getInstance()

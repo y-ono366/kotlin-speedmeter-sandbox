@@ -2,7 +2,7 @@ package systems.ohno.h_money
 
 import android.os.Bundle
 import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
+import android.app.Activity
 import android.widget.Button
 import android.content.Intent
 
@@ -11,11 +11,10 @@ import org.w3c.dom.Text
 import android.text.InputType
 import android.widget.EditText
 
-class SettingActivity : AppCompatActivity() {
+class SettingActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setSupportActionBar(toolbar)
         setContentView(R.layout.activity_setting)
 
         val payDay= findViewById(R.id.payDay) as EditText
@@ -23,7 +22,7 @@ class SettingActivity : AppCompatActivity() {
         val amount= findViewById(R.id.amount) as EditText
         amount.setInputType(InputType.TYPE_CLASS_NUMBER)
 
-        val prefs = getSharedPreferences("HMONEY_FILE", AppCompatActivity.MODE_PRIVATE)
+        val prefs = getSharedPreferences("HMONEY_FILE", Activity.MODE_PRIVATE)
         var prefAmount = prefs.getInt("amount",0)
         var prefPayDay = prefs.getInt("payDay",1)
 
