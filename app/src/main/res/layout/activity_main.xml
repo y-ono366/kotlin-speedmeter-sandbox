@@ -26,91 +26,91 @@
 
     <Button
         android:id="@+id/oneHundBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="172dp"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="522dp"
+        android:background="@drawable/ic_oval_2"
         android:text="100"
-        app:layout_constraintEnd_toStartOf="@+id/fiveHundBtn"
-        app:layout_constraintHorizontal_bias="0.516"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hour_speed" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/fiveHundBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="100dp"
-        android:layout_marginTop="172dp"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="522dp"
+        android:background="@drawable/ic_oval_2"
         android:text="500"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hour_speed" />
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/oneHundBtn"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/thousandBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="236dp"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="522dp"
+        android:background="@drawable/ic_oval_2"
         android:text="1000"
-        app:layout_constraintEnd_toStartOf="@+id/fiveThousandBtn"
-        app:layout_constraintHorizontal_bias="0.41"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hour_speed" />
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/fiveHundBtn"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/fiveThousandBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="100dp"
-        android:layout_marginTop="236dp"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="522dp"
+        android:background="@drawable/ic_oval_2"
         android:text="5000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hour_speed" />
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/thousandBtn"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button9"
-        android:layout_width="91dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="20dp"
+        android:id="@+id/tenThousandBtn"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="522dp"
+        android:background="@drawable/ic_oval_2"
         android:text="10000"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/thousandBtn" />
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/fiveThousandBtn"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:text="50000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.115"
-        app:layout_constraintStart_toEndOf="@+id/button9"
-        app:layout_constraintTop_toBottomOf="@+id/fiveThousandBtn" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="31dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginTop="240dp"
         android:text="¥/h"
-        android:textSize="30dp"
-        app:layout_constraintStart_toEndOf="@+id/hour_speed"
+        android:textSize="15sp"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/settingActivityBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginTop="587dp"
+        android:background="@drawable/ic_settingoval"
         android:text="設定"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

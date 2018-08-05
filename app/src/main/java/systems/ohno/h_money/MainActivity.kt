@@ -59,6 +59,10 @@ class MainActivity : Activity() {
             viewer.setText(Speed(HourCalculation(resave(5000))))
         }
 
+        val tenThousandBtn: Button = findViewById(R.id.tenThousandBtn)
+        tenThousandBtn.setOnClickListener {
+            viewer.setText(Speed(HourCalculation(resave(10000))))
+        }
 
         val settingActivityBtn:Button = findViewById(R.id.settingActivityBtn)
         settingActivityBtn.setOnClickListener {
