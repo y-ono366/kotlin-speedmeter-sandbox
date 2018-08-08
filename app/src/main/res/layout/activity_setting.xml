@@ -11,6 +11,7 @@
     <ImageView
         android:layout_width="295dp"
         android:layout_height="56dp"
+        android:layout_marginEnd="40dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="106dp"
         android:scaleType="center"
@@ -22,6 +23,7 @@
     <ImageView
         android:layout_width="295dp"
         android:layout_height="56dp"
+        android:layout_marginEnd="40dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="268dp"
         android:scaleType="center"
@@ -29,5 +31,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/saveBtn"
+        android:layout_width="205dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="64dp"
+        android:layout_marginEnd="86dp"
+        android:layout_marginStart="86dp"
+        android:layout_marginTop="558dp"
+        android:background="@drawable/ic_bbtn"
+        android:text="設定"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </android.support.constraint.ConstraintLayout>

@@ -26,18 +26,18 @@ class SettingActivity : Activity() {
 //        amount.setText(prefAmount.toString())
 //
 //
-//        val saveBtn:Button = findViewById(R.id.saveBtn) as Button
-//        saveBtn.setOnClickListener {
-//            val day = Integer.parseInt(payDay.text.toString())
-//            val amount = Integer.parseInt(amount.text.toString())
-//
-//            val editor = prefs.edit()
-//            editor.putInt("payDay",day)
-//            editor.putInt("amount",amount)
-//            editor.commit()
-//            val settingIntent = Intent(this, MainActivity::class.java)
-//            startActivity(settingIntent)
-//        }
+        val saveBtn:Button = findViewById(R.id.saveBtn) as Button
+        saveBtn.setOnClickListener {
+        //    val day = Integer.parseInt(payDay.text.toString())
+        //    val amount = Integer.parseInt(amount.text.toString())
+
+        //    val editor = prefs.edit()
+        //    editor.putInt("payDay",day)
+        //    editor.putInt("amount",amount)
+        //    editor.commit()
+            val settingIntent = Intent(this, MainActivity::class.java)
+            startActivity(settingIntent)
+        }
 
     }
 
