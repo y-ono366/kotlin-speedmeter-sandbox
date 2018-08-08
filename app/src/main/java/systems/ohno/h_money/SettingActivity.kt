@@ -13,16 +13,16 @@ class SettingActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
 
-//        val payDay= findViewById(R.id.payDay) as EditText
-//        payDay.setInputType(InputType.TYPE_CLASS_NUMBER)
+        val payDay= findViewById(R.id.payDay) as EditText
+        payDay.setInputType(InputType.TYPE_CLASS_NUMBER)
 //        val amount= findViewById(R.id.amount) as EditText
 //        amount.setInputType(InputType.TYPE_CLASS_NUMBER)
 //
-//        val prefs = getSharedPreferences("HMONEY_FILE", Activity.MODE_PRIVATE)
-//        var prefAmount = prefs.getInt("amount",0)
-//        var prefPayDay = prefs.getInt("payDay",1)
+        val prefs = getSharedPreferences("HMONEY_FILE", Activity.MODE_PRIVATE)
+        //var prefAmount = prefs.getInt("amount",0)
+        var prefPayDay = prefs.getInt("payDay",1)
 //
-//        payDay.setText(prefPayDay.toString())
+        payDay.setText(prefPayDay.toString())
 //        amount.setText(prefAmount.toString())
 //
 //

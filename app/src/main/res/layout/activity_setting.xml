@@ -41,12 +41,50 @@
         android:layout_marginStart="86dp"
         android:layout_marginTop="558dp"
         android:background="@drawable/ic_bbtn"
-        android:text="設定"
+        android:text="完了"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <LinearLayout
+        android:layout_width="290dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="112dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="給料日"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:layout_gravity="center_vertical" />
+
+        <EditText
+            android:id="@+id/payDay"
+            android:layout_width="210dp"
+            android:layout_height="40dp"
+            android:gravity="right"/>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="20dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="日"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:layout_gravity="center_vertical" />
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
