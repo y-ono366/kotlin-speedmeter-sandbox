@@ -15,26 +15,25 @@ class SettingActivity : Activity() {
 
         val payDay= findViewById(R.id.payDay) as EditText
         payDay.setInputType(InputType.TYPE_CLASS_NUMBER)
-//        val amount= findViewById(R.id.amount) as EditText
-//        amount.setInputType(InputType.TYPE_CLASS_NUMBER)
-//
+        val amount= findViewById(R.id.amount) as EditText
+        amount.setInputType(InputType.TYPE_CLASS_NUMBER)
+
         val prefs = getSharedPreferences("HMONEY_FILE", Activity.MODE_PRIVATE)
-        //var prefAmount = prefs.getInt("amount",0)
-        var prefPayDay = prefs.getInt("payDay",1)
-//
+        var prefAmount:Int = prefs.getInt("amount",0)
+        var prefPayDay:Int = prefs.getInt("payDay",1)
+
         payDay.setText(prefPayDay.toString())
-//        amount.setText(prefAmount.toString())
-//
-//
+        amount.setText(prefAmount.toString())
+
         val saveBtn:Button = findViewById(R.id.saveBtn) as Button
         saveBtn.setOnClickListener {
-        //    val day = Integer.parseInt(payDay.text.toString())
-        //    val amount = Integer.parseInt(amount.text.toString())
+            val day = Integer.parseInt(payDay.text.toString())
+            val amount = Integer.parseInt(amount.text.toString())
 
-        //    val editor = prefs.edit()
-        //    editor.putInt("payDay",day)
-        //    editor.putInt("amount",amount)
-        //    editor.commit()
+            val editor = prefs.edit()
+            editor.putInt("payDay",day)
+            editor.putInt("amount",amount)
+            editor.commit()
             val settingIntent = Intent(this, MainActivity::class.java)
             startActivity(settingIntent)
         }
