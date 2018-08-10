@@ -13,9 +13,9 @@ class MainActivity : Activity() {
         super<Activity>.onCreate(savedInstanceState)
 
         val prefs = getSharedPreferences("HMONEY_FILE", Activity.MODE_PRIVATE)
-        var resetFlg:Int = prefs.getInt("resetFlg",0)
-        var total:Int = prefs.getInt("totalMoney",0)
-        var payDay:Int = prefs.getInt("payDay",1)
+        val resetFlg:Int = prefs.getInt("resetFlg",0)
+        val total:Int = prefs.getInt("totalMoney",0)
+        val payDay:Int = prefs.getInt("payDay",1)
 
         val nowDate = Calendar.getInstance()
         val format = SimpleDateFormat("dd")
@@ -32,36 +32,38 @@ class MainActivity : Activity() {
             editor.commit()
         }
 
-        var hour_speed:Int = getHourSpeed(total)
-        var viewer  = topView(applicationContext)
+        val hour_speed:Int = getHourSpeed(total)
+        val viewer  = topView(applicationContext)
 
-        viewer.setText(Speed(hour_speed))
+        val remaingAmount:Int = getRemainingAmount(total)
+
+        viewer.setText(Speed(hour_speed,remaingAmount))
         setContentView(viewer)
 
         val oneHundBtn: Button = findViewById(R.id.oneHundBtn)
         oneHundBtn.setOnClickListener {
-            viewer.setText(Speed(getHourSpeed(reSave(100))))
+            viewer.setText(Speed(getHourSpeed(reSave(100)),remaingAmount))
         }
 
 
         val fiveHundBtn: Button = findViewById(R.id.fiveHundBtn)
         fiveHundBtn.setOnClickListener {
-            viewer.setText(Speed(getHourSpeed(reSave(500))))
+            viewer.setText(Speed(getHourSpeed(reSave(500)),remaingAmount))
         }
 
         val thousandBtn: Button = findViewById(R.id.thousandBtn)
         thousandBtn.setOnClickListener {
-            viewer.setText(Speed(getHourSpeed(reSave(1000))))
+            viewer.setText(Speed(getHourSpeed(reSave(1000)),remaingAmount))
         }
 
         val fiveThousandBtn: Button = findViewById(R.id.fiveThousandBtn)
         fiveThousandBtn.setOnClickListener {
-            viewer.setText(Speed(getHourSpeed(reSave(5000))))
+            viewer.setText(Speed(getHourSpeed(reSave(5000)),remaingAmount))
         }
 
         val tenThousandBtn: Button = findViewById(R.id.tenThousandBtn)
         tenThousandBtn.setOnClickListener {
-            viewer.setText(Speed(getHourSpeed(reSave(10000))))
+            viewer.setText(Speed(getHourSpeed(reSave(10000)),remaingAmount))
         }
 
         val settingActivityBtn:Button = findViewById(R.id.settingActivityBtn)
@@ -74,7 +76,7 @@ class MainActivity : Activity() {
 
     fun reSave (money:Int):Int {
         val prefs = getSharedPreferences("HMONEY_FILE", Activity.MODE_PRIVATE)
-        var newTotal:Int = prefs.getInt("totalMoney",0) + money
+        val newTotal:Int = prefs.getInt("totalMoney",0) + money
         val editor = prefs.edit()
         editor.putInt("totalMoney",newTotal)
         editor.commit()
@@ -82,8 +84,8 @@ class MainActivity : Activity() {
     }
 
     fun calHourSpeed(total:Int,miliss:Long): Float {
-        var hour:Float = miliss.toFloat() / 3600000
-        var speed:Float = total.toFloat() / hour
+        val hour:Float = miliss.toFloat() / 3600000
+        val speed:Float = total.toFloat() / hour
         return speed
     }
 
@@ -99,15 +101,43 @@ class MainActivity : Activity() {
 
     fun  getHourSpeed(total:Int): Int {
         val prefs = getSharedPreferences("HMONEY_FILE", Activity.MODE_PRIVATE)
-        var prefPayDay:Int = prefs.getInt("payDay",1)
+        val prefPayDay:Int = prefs.getInt("payDay",1)
 
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.MONTH, -1)
         val format = SimpleDateFormat("yyyy-MM-")
         val beforePayDate = format.format(calendar.getTime())+prefPayDay.toString()
 
-        var diffMiliis:Long =getDiffMiliis(beforePayDate)
-        var hour:Float = calHourSpeed(total,diffMiliis)
+        val diffMiliis:Long =getDiffMiliis(beforePayDate)
+        val hour:Float = calHourSpeed(total,diffMiliis)
         return Math.round(hour)
+    }
+
+    fun getAverageSpeed(total:Int):Int {
+        val now:String = "2018-08-10"
+        val before:String = "2018-07-10"
+        val diffMiliis = getDiffMiliisByDate(now,before)
+        val speed:Float =  calHourSpeed(total,diffMiliis)
+        return Math.round(speed)
+    }
+
+    fun getDiffMiliisByDate(nowDate:String,beforeDate:String):Long {
+        val nowCalender = Calendar.getInstance()
+        val beforeCalender = Calendar.getInstance()
+
+        val format = SimpleDateFormat("yyyy-MM-dd")
+        val parseNowDate = format.parse(nowDate)
+        nowCalender.setTime(parseNowDate)
+
+        val parseBeforeDate = format.parse(beforeDate)
+        beforeCalender.setTime(parseBeforeDate)
+        val diffMiliisTime =  nowCalender.getTimeInMillis() - beforeCalender.getTimeInMillis()
+        return diffMiliisTime
+    }
+
+    fun getRemainingAmount(total:Int):Int {
+        val prefs = getSharedPreferences("HMONEY_FILE", Activity.MODE_PRIVATE)
+        val amount:Int = prefs.getInt("amount",0)
+        return amount - total
     }
 }
