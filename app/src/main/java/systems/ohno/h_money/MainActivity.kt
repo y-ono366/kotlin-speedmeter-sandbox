@@ -94,26 +94,17 @@ class MainActivity : Activity() {
         return speed
     }
 
-    fun getDiffMiliis(beforeDate:String):Long {
-        val nowDate = Calendar.getInstance()
-        val calender = Calendar.getInstance()
-        val format = SimpleDateFormat("yyyy-MM-dd")
-        val date = format.parse(beforeDate)
-        calender.setTime(date)
-        val diffMiliisTime =  nowDate.getTimeInMillis() - calender.getTimeInMillis()
-        return diffMiliisTime
-    }
-
     fun  getHourSpeed(total:Int): Int {
         val prefs = getSharedPreferences("HMONEY_FILE", Activity.MODE_PRIVATE)
         val prefPayDay:Int = prefs.getInt("payDay",1)
 
-        val calendar = Calendar.getInstance()
-        calendar.add(Calendar.MONTH, -1)
         val format = SimpleDateFormat("yyyy-MM-")
-        val beforePayDate = format.format(calendar.getTime())+prefPayDay.toString()
+        val calendar = Calendar.getInstance()
+        val nowDateCalendar = format.format(calendar.getTime())+prefPayDay.toString()
+        calendar.add(Calendar.MONTH, -1)
+        val beforeDateCalendar = format.format(calendar.getTime())+prefPayDay.toString()
 
-        val diffMiliis:Long =getDiffMiliis(beforePayDate)
+        val diffMiliis:Long =getDiffMiliisByDate(nowDateCalendar,beforeDateCalendar)
         val hour:Float = calHourSpeed(total,diffMiliis)
         return Math.round(hour)
     }
