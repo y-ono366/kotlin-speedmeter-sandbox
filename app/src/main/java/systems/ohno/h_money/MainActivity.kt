@@ -42,28 +42,33 @@ class MainActivity : Activity() {
 
         val oneHundBtn: Button = findViewById(R.id.oneHundBtn)
         oneHundBtn.setOnClickListener {
-            viewer.setText(Speed(getHourSpeed(reSave(100)),remaingAmount))
+            val total:Int = reSave(100)
+            viewer.setText(Speed(getHourSpeed(total),getRemainingAmount(total)))
         }
 
 
         val fiveHundBtn: Button = findViewById(R.id.fiveHundBtn)
         fiveHundBtn.setOnClickListener {
-            viewer.setText(Speed(getHourSpeed(reSave(500)),remaingAmount))
+            val total:Int = reSave(500)
+            viewer.setText(Speed(getHourSpeed(total),getRemainingAmount(total)))
         }
 
         val thousandBtn: Button = findViewById(R.id.thousandBtn)
         thousandBtn.setOnClickListener {
-            viewer.setText(Speed(getHourSpeed(reSave(1000)),remaingAmount))
+            val total:Int = reSave(1000)
+            viewer.setText(Speed(getHourSpeed(total),getRemainingAmount(total)))
         }
 
         val fiveThousandBtn: Button = findViewById(R.id.fiveThousandBtn)
         fiveThousandBtn.setOnClickListener {
-            viewer.setText(Speed(getHourSpeed(reSave(5000)),remaingAmount))
+            val total:Int = reSave(5000)
+            viewer.setText(Speed(getHourSpeed(total),getRemainingAmount(total)))
         }
 
         val tenThousandBtn: Button = findViewById(R.id.tenThousandBtn)
         tenThousandBtn.setOnClickListener {
-            viewer.setText(Speed(getHourSpeed(reSave(10000)),remaingAmount))
+            val total:Int = reSave(10000)
+            viewer.setText(Speed(getHourSpeed(total),getRemainingAmount(total)))
         }
 
         val settingActivityBtn:Button = findViewById(R.id.settingActivityBtn)
