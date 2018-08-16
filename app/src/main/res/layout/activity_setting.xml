@@ -71,6 +71,7 @@
 
         <EditText
             android:id="@+id/payDay"
+            android:background="@null"
             android:layout_width="210dp"
             android:layout_height="40dp"
             android:gravity="right"/>
@@ -111,6 +112,7 @@
         <EditText
             android:id="@+id/amount"
             android:layout_width="210dp"
+            android:background="@null"
             android:layout_height="40dp"
             android:gravity="right"/>
 
