@@ -38,6 +38,16 @@ class SettingActivity : Activity() {
             startActivity(settingIntent)
         }
 
+        val resetBtn:Button = findViewById(R.id.resetBtn) as Button
+        resetBtn.setOnClickListener {
+            val editor = prefs.edit()
+            editor.putInt("payDay",0)
+            editor.putInt("amount",0)
+            editor.putInt("totalMoney",0)
+            editor.commit()
+            val settingIntent = Intent(this, MainActivity::class.java)
+            startActivity(settingIntent)
+        }
     }
 
 }

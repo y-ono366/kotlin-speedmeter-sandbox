@@ -14,16 +14,19 @@ class topView: FrameLayout{
 
     var speedView: TextView? = null
     var remaingAmountView: TextView? = null
+    var averageSpeedView: TextView? = null
 
     init {
         LayoutInflater.from(context).inflate(R.layout.activity_main,this)
         speedView =findViewById(R.id.hour_speed) as TextView
         remaingAmountView =findViewById(R.id.reaming_amount) as TextView
+        averageSpeedView =findViewById(R.id.average) as TextView
     }
 
     fun setText(speed:Speed) {
         speedView?.text = speed.hour_speed.toString()
         remaingAmountView?.text = speed.remaing_amount.toString()
+        averageSpeedView?.text = speed.average_speed.toString()
     }
 }
 

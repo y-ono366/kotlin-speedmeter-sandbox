@@ -17,6 +17,7 @@ class MainActivity : Activity() {
         val resetFlg:Int = prefs.getInt("resetFlg",0)
         val total:Int = prefs.getInt("totalMoney",0)
         val payDay:Int = prefs.getInt("payDay",1)
+        var amount:Int = prefs.getInt("amount",0)
 
         val nowDate = Calendar.getInstance()
         val format = SimpleDateFormat("dd")
@@ -32,44 +33,45 @@ class MainActivity : Activity() {
             editor.putInt("totalMoney",0)
             editor.commit()
         }
+        val average:Int = getAverageSpeed(amount)
 
         val hour_speed:Int = getHourSpeed(total)
         val viewer  = topView(applicationContext)
 
         val remaingAmount:Int = getRemainingAmount(total)
 
-        viewer.setText(Speed(hour_speed,remaingAmount))
+        viewer.setText(Speed(hour_speed,remaingAmount,average))
         setContentView(viewer)
 
         val oneHundBtn: Button = findViewById(R.id.oneHundBtn)
         oneHundBtn.setOnClickListener {
             val total:Int = reSave(100)
-            viewer.setText(Speed(getHourSpeed(total),getRemainingAmount(total)))
+            viewer.setText(Speed(getHourSpeed(total),getRemainingAmount(total),average))
         }
 
 
         val fiveHundBtn: Button = findViewById(R.id.fiveHundBtn)
         fiveHundBtn.setOnClickListener {
             val total:Int = reSave(500)
-            viewer.setText(Speed(getHourSpeed(total),getRemainingAmount(total)))
+            viewer.setText(Speed(getHourSpeed(total),getRemainingAmount(total),average))
         }
 
         val thousandBtn: Button = findViewById(R.id.thousandBtn)
         thousandBtn.setOnClickListener {
             val total:Int = reSave(1000)
-            viewer.setText(Speed(getHourSpeed(total),getRemainingAmount(total)))
+            viewer.setText(Speed(getHourSpeed(total),getRemainingAmount(total),average))
         }
 
         val fiveThousandBtn: Button = findViewById(R.id.fiveThousandBtn)
         fiveThousandBtn.setOnClickListener {
             val total:Int = reSave(5000)
-            viewer.setText(Speed(getHourSpeed(total),getRemainingAmount(total)))
+            viewer.setText(Speed(getHourSpeed(total),getRemainingAmount(total),average))
         }
 
         val tenThousandBtn: Button = findViewById(R.id.tenThousandBtn)
         tenThousandBtn.setOnClickListener {
             val total:Int = reSave(10000)
-            viewer.setText(Speed(getHourSpeed(total),getRemainingAmount(total)))
+            viewer.setText(Speed(getHourSpeed(total),getRemainingAmount(total),average))
         }
 
         val settingActivityBtn:ImageButton = findViewById(R.id.settingActivityBtn)
@@ -106,11 +108,13 @@ class MainActivity : Activity() {
         return Math.round(hour)
     }
 
-    fun getAverageSpeed(total:Int):Int {
-        val now:String = "2018-08-10"
-        val before:String = "2018-07-10"
+    fun getAverageSpeed(amount:Int):Int {
+        val prefs = getSharedPreferences("HMONEY_FILE", Activity.MODE_PRIVATE)
+        val prefPayDay:Int = prefs.getInt("payDay",1)
+        val now = getNowDate(prefPayDay)
+        val before = getBeforeDate(prefPayDay)
         val diffMiliis = getDiffMiliisByDate(now,before)
-        val speed:Float =  calHourSpeed(total,diffMiliis)
+        val speed:Float =  calHourSpeed(amount,diffMiliis)
         return Math.round(speed)
     }
 
