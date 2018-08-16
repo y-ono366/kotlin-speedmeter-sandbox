@@ -98,12 +98,8 @@ class MainActivity : Activity() {
         val prefs = getSharedPreferences("HMONEY_FILE", Activity.MODE_PRIVATE)
         val prefPayDay:Int = prefs.getInt("payDay",1)
 
-        val format = SimpleDateFormat("yyyy-MM-")
-        val calendar = Calendar.getInstance()
-        val nowDateCalendar = format.format(calendar.getTime())+prefPayDay.toString()
-        calendar.add(Calendar.MONTH, -1)
-        val beforeDateCalendar = format.format(calendar.getTime())+prefPayDay.toString()
-
+        val nowDateCalendar = getNowDate(prefPayDay)
+        val beforeDateCalendar = getBeforeDate(prefPayDay)
         val diffMiliis:Long =getDiffMiliisByDate(nowDateCalendar,beforeDateCalendar)
         val hour:Float = calHourSpeed(total,diffMiliis)
         return Math.round(hour)
@@ -136,4 +132,17 @@ class MainActivity : Activity() {
         val amount:Int = prefs.getInt("amount",0)
         return amount - total
     }
-}
+
+    fun getNowDate(payDay:Int):String {
+        val format = SimpleDateFormat("yyyy-MM-")
+        val calendar = Calendar.getInstance()
+        return format.format(calendar.getTime())+payDay.toString()
+    }
+
+    fun getBeforeDate(payDay:Int):String {
+        val format = SimpleDateFormat("yyyy-MM-")
+        val calendar = Calendar.getInstance()
+        calendar.add(Calendar.MONTH, -1)
+        return format.format(calendar.getTime())+payDay.toString()
+    }
+  }
