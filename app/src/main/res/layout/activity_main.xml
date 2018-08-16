@@ -24,6 +24,21 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
+    <ImageView
+        android:layout_width="244dp"
+        android:layout_height="191.6dp"
+        android:layout_marginBottom="416dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="69dp"
+        android:scaleType="center"
+        android:src="@drawable/ic_ovalspeed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="31dp"
@@ -37,6 +52,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="284dp"
         android:layout_height="44dp"
         android:layout_centerHorizontal="true"
@@ -112,13 +128,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
+        <ImageButton
             android:id="@+id/settingActivityBtn"
             android:layout_width="44dp"
             android:layout_height="44dp"
             android:background="@drawable/ic_settingoval"
-            android:text="設定"
+            android:layout_below="@+id/textView1"
+            android:src="@drawable/ic_settings_black_24dp"
             android:textColor="#FFFFFF" />
+
 
     </LinearLayout>
 
@@ -135,6 +153,20 @@
         android:text="200000"
         android:textColor="#FFFFFF"
         android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginBottom="226dp"
+        android:layout_marginEnd="93dp"
+        android:layout_marginStart="264dp"
+        android:layout_marginTop="423dp"
+        android:src="@drawable/ic_local_gas_station_black_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

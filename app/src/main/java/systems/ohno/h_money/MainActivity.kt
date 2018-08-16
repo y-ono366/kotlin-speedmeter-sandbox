@@ -7,6 +7,7 @@ import systems.ohno.h_money.model.Speed
 import java.util.Calendar
 import java.text.SimpleDateFormat
 import android.widget.Button
+import android.widget.ImageButton
 
 class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,7 +72,7 @@ class MainActivity : Activity() {
             viewer.setText(Speed(getHourSpeed(total),getRemainingAmount(total)))
         }
 
-        val settingActivityBtn:Button = findViewById(R.id.settingActivityBtn)
+        val settingActivityBtn:ImageButton = findViewById(R.id.settingActivityBtn)
         settingActivityBtn.setOnClickListener {
             val settingIntent = Intent(this, SettingActivity::class.java)
             startActivity(settingIntent)
