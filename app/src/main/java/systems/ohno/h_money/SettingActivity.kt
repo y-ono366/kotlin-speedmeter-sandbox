@@ -5,6 +5,7 @@ import android.app.Activity
 import android.widget.Button
 import android.content.Intent
 import android.text.InputType
+import android.view.KeyEvent
 import android.widget.EditText
 
 class SettingActivity : Activity() {
@@ -50,4 +51,11 @@ class SettingActivity : Activity() {
         }
     }
 
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if(keyCode==KeyEvent.KEYCODE_BACK){
+            val settingIntent = Intent(this, MainActivity::class.java)
+            startActivity(settingIntent)
+        }
+        return false
+    }
 }

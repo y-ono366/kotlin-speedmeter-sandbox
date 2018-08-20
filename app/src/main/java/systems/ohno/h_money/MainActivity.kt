@@ -8,6 +8,7 @@ import java.util.Calendar
 import java.text.SimpleDateFormat
 import android.widget.Button
 import android.widget.ImageButton
+import android.view.KeyEvent
 
 class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,7 +80,13 @@ class MainActivity : Activity() {
             val settingIntent = Intent(this, SettingActivity::class.java)
             startActivity(settingIntent)
         }
+    }
 
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if(keyCode==KeyEvent.KEYCODE_BACK){
+            moveTaskToBack (true)
+        }
+        return false
     }
 
     fun reSave (money:Int):Int {
