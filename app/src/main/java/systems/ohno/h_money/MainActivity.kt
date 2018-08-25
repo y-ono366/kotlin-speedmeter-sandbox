@@ -79,6 +79,7 @@ class MainActivity : Activity() {
         settingActivityBtn.setOnClickListener {
             val settingIntent = Intent(this, SettingActivity::class.java)
             startActivity(settingIntent)
+            overridePendingTransition(R.anim.in_right, R.anim.out_left)
         }
     }
 
