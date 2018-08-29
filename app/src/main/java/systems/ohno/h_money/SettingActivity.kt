@@ -37,6 +37,7 @@ class SettingActivity : Activity() {
             editor.commit()
             val settingIntent = Intent(this, MainActivity::class.java)
             startActivity(settingIntent)
+            overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left)
         }
 
         val resetBtn:Button = findViewById(R.id.resetBtn) as Button
@@ -46,7 +47,9 @@ class SettingActivity : Activity() {
             editor.putInt("amount",0)
             editor.putInt("totalMoney",0)
             editor.commit()
-            finish()
+            val settingIntent = Intent(this, MainActivity::class.java)
+            startActivity(settingIntent)
+            overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left)
         }
     }
 }
