@@ -36,7 +36,7 @@ class MainActivity : Activity() {
         }
         val average:Int = getAverageSpeed(amount)
 
-        val hour_speed:Int = getHourSpeed(total)
+        val hour_speed:Float = getHourSpeed(total)
         val viewer  = topView(applicationContext)
 
         val remaingAmount:Int = getRemainingAmount(total)
@@ -105,7 +105,7 @@ class MainActivity : Activity() {
         return speed
     }
 
-    fun  getHourSpeed(total:Int): Int {
+    fun  getHourSpeed(total:Int): Float {
         val prefs = getSharedPreferences("HMONEY_FILE", Activity.MODE_PRIVATE)
         val prefPayDay:Int = prefs.getInt("payDay",1)
 
@@ -113,7 +113,7 @@ class MainActivity : Activity() {
         val beforeDateCalendar = getBeforeDate(prefPayDay)
         val diffMiliis:Long =getDiffMiliisByDate(nowDateCalendar,beforeDateCalendar)
         val hour:Float = calHourSpeed(total,diffMiliis)
-        return Math.round(hour)
+        return hour
     }
 
     fun getAverageSpeed(amount:Int):Int {
