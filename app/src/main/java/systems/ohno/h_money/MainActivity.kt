@@ -109,7 +109,7 @@ class MainActivity : Activity() {
         val prefs = getSharedPreferences("HMONEY_FILE", Activity.MODE_PRIVATE)
         val prefPayDay:Int = prefs.getInt("payDay",1)
 
-        val nowDateCalendar = getNowDate(prefPayDay)
+        val nowDateCalendar = getNowDate()
         val beforeDateCalendar = getBeforeDate(prefPayDay)
         val diffMiliis:Long =getDiffMiliisByDate(nowDateCalendar,beforeDateCalendar)
         val hour:Float = calHourSpeed(total,diffMiliis)
@@ -119,7 +119,7 @@ class MainActivity : Activity() {
     fun getAverageSpeed(amount:Int):Int {
         val prefs = getSharedPreferences("HMONEY_FILE", Activity.MODE_PRIVATE)
         val prefPayDay:Int = prefs.getInt("payDay",1)
-        val now = getNowDate(prefPayDay)
+        val now = getNowDate()
         val before = getBeforeDate(prefPayDay)
         val diffMiliis = getDiffMiliisByDate(now,before)
         val speed:Float =  calHourSpeed(amount,diffMiliis)
@@ -130,7 +130,7 @@ class MainActivity : Activity() {
         val nowCalender = Calendar.getInstance()
         val beforeCalender = Calendar.getInstance()
 
-        val format = SimpleDateFormat("yyyy-MM-dd")
+        val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
         val parseNowDate = format.parse(nowDate)
         nowCalender.setTime(parseNowDate)
 
@@ -146,16 +146,16 @@ class MainActivity : Activity() {
         return amount - total
     }
 
-    fun getNowDate(payDay:Int):String {
-        val format = SimpleDateFormat("yyyy-MM-")
+    fun getNowDate():String {
+        val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
         val calendar = Calendar.getInstance()
-        return format.format(calendar.getTime())+payDay.toString()
+        return format.format(calendar.getTime())
     }
 
     fun getBeforeDate(payDay:Int):String {
         val format = SimpleDateFormat("yyyy-MM-")
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.MONTH, -1)
-        return format.format(calendar.getTime())+payDay.toString()
+        return format.format(calendar.getTime())+payDay.toString()+" 00:00:00"
     }
   }
