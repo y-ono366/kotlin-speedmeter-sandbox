@@ -112,7 +112,7 @@ class MainActivity : Activity() {
         val prefPayDay:Int = prefs.getInt("payDay",1)
 
         val nowDateCalendar = getNowDate()
-        val beforeDateCalendar = getBeforeDate(prefPayDay)
+        val beforeDateCalendar = getBackDate(prefPayDay)
         val diffMiliis:Long =getDiffMiliisByDate(nowDateCalendar,beforeDateCalendar)
         val hour:Float = calHourSpeed(total,diffMiliis)
         return hour
@@ -122,7 +122,7 @@ class MainActivity : Activity() {
         val prefs = getSharedPreferences("HMONEY_FILE", Activity.MODE_PRIVATE)
         val prefPayDay:Int = prefs.getInt("payDay",1)
         val now = getNowDate()
-        val before = getBeforeDate(prefPayDay)
+        val before = getBackDate(prefPayDay)
         val diffMiliis = getDiffMiliisByDate(now,before)
         val speed:Float =  calHourSpeed(amount,diffMiliis)
         return Math.round(speed)
@@ -157,11 +157,25 @@ class MainActivity : Activity() {
         return format.format(calendar.getTime())
     }
 
-    /* 先月支払日取得 */
-    fun getBeforeDate(payDay:Int):String {
+    /* 前回の支払日取得 */
+    fun getBackDate(payDay:Int):String {
         val format = SimpleDateFormat("yyyy-MM-")
         val calendar = Calendar.getInstance()
-        calendar.add(Calendar.MONTH, -1)
+        val nowDate:Int =  calendar.get(Calendar.DAY_OF_MONTH)
+        if(nowDate < payDay) {
+            calendar.add(Calendar.MONTH, -1)
+        }
         return format.format(calendar.getTime())+payDay.toString()+" 00:00:00"
     }
-  }
+
+    /* 次の支払日取得 */
+    fun getNextDate(payDay:Int):String {
+        val format = SimpleDateFormat("yyyy-MM-")
+        val calendar = Calendar.getInstance()
+        val nowDate:Int =  calendar.get(Calendar.DAY_OF_MONTH)
+        if(nowDate > payDay) {
+            calendar.add(Calendar.MONTH, +1)
+        }
+        return format.format(calendar.getTime())+payDay.toString()+" 00:00:00"
+    }
+}
