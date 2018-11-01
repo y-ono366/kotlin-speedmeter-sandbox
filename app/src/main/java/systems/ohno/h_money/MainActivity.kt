@@ -99,12 +99,14 @@ class MainActivity : Activity() {
         return newTotal
     }
 
+    /* 総利用額と差分から1hでの利用額を算出 */
     fun calHourSpeed(total:Int,miliss:Long): Float {
         val hour:Float = miliss.toFloat() / 3600000
         val speed:Float = total.toFloat() / hour
         return speed
     }
 
+    /* 1hの速度を取得 */
     fun  getHourSpeed(total:Int): Float {
         val prefs = getSharedPreferences("HMONEY_FILE", Activity.MODE_PRIVATE)
         val prefPayDay:Int = prefs.getInt("payDay",1)
@@ -126,6 +128,7 @@ class MainActivity : Activity() {
         return Math.round(speed)
     }
 
+    /*今日 - 先月の支払い日の差分を取得*/
     fun getDiffMiliisByDate(nowDate:String,beforeDate:String):Long {
         val nowCalender = Calendar.getInstance()
         val beforeCalender = Calendar.getInstance()
@@ -140,18 +143,21 @@ class MainActivity : Activity() {
         return diffMiliisTime
     }
 
+    /* 残りの金額を取得*/
     fun getRemainingAmount(total:Int):Int {
         val prefs = getSharedPreferences("HMONEY_FILE", Activity.MODE_PRIVATE)
         val amount:Int = prefs.getInt("amount",0)
         return amount - total
     }
 
+    /* 現在の日付をStringで取得 */
     fun getNowDate():String {
         val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
         val calendar = Calendar.getInstance()
         return format.format(calendar.getTime())
     }
 
+    /* 先月支払日取得 */
     fun getBeforeDate(payDay:Int):String {
         val format = SimpleDateFormat("yyyy-MM-")
         val calendar = Calendar.getInstance()
