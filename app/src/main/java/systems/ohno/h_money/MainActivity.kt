@@ -17,8 +17,19 @@ class MainActivity : Activity() {
         val prefs = getSharedPreferences("HMONEY_FILE", Activity.MODE_PRIVATE)
         val resetFlg:Int = prefs.getInt("resetFlg",0)
         val total:Int = prefs.getInt("totalMoney",0)
-        val payDay:Int = prefs.getInt("payDay",1)
+        val payDay:Int = prefs.getInt("payDay",0)
         var amount:Int = prefs.getInt("amount",0)
+        //支払日があるか判定
+        if(isSetPayDay(payDay)) {
+            //ない場合は今日を設定
+            setPayDayOfNowDay()
+        }
+
+        //支払日を超えているか判定
+        if(isOverPayDay()) {
+            //超えている場合は、totalMoneyをreset
+            /* resetPref() */
+        }
 
         val nowDate = Calendar.getInstance()
         val format = SimpleDateFormat("dd")
@@ -111,7 +122,7 @@ class MainActivity : Activity() {
         val prefs = getSharedPreferences("HMONEY_FILE", Activity.MODE_PRIVATE)
         val prefPayDay:Int = prefs.getInt("payDay",1)
 
-        val nowDateCalendar = getNowDate()
+        val nowDateCalendar = getStrNowDate()
         val beforeDateCalendar = getBackDate(prefPayDay)
         val diffMiliis:Long =getDiffMiliisByDate(nowDateCalendar,beforeDateCalendar)
         val hour:Float = calHourSpeed(total,diffMiliis)
@@ -121,7 +132,7 @@ class MainActivity : Activity() {
     fun getAverageSpeed(amount:Int):Int {
         val prefs = getSharedPreferences("HMONEY_FILE", Activity.MODE_PRIVATE)
         val prefPayDay:Int = prefs.getInt("payDay",1)
-        val now = getNowDate()
+        val now = getStrNowDate()
         val before = getBackDate(prefPayDay)
         val diffMiliis = getDiffMiliisByDate(now,before)
         val speed:Float =  calHourSpeed(amount,diffMiliis)
@@ -151,7 +162,7 @@ class MainActivity : Activity() {
     }
 
     /* 現在の日付をStringで取得 */
-    fun getNowDate():String {
+    fun getStrNowDate():String {
         val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
         val calendar = Calendar.getInstance()
         return format.format(calendar.getTime())
@@ -177,5 +188,36 @@ class MainActivity : Activity() {
             calendar.add(Calendar.MONTH, +1)
         }
         return format.format(calendar.getTime())+payDay.toString()+" 00:00:00"
+    }
+
+    fun isSetPayDay(payDay:Int):Boolean {
+        if(payDay == 0) {
+            return true
+        }
+        return false
+    }
+
+    fun getNowDate():Int{
+        val calendar = Calendar.getInstance()
+        val nowDate:Int =  calendar.get(Calendar.DAY_OF_MONTH)
+        return nowDate
+    }
+
+    fun setPayDayOfNowDay(){
+        val prefs = getSharedPreferences("HMONEY_FILE", Activity.MODE_PRIVATE)
+        val nowDate:Int =  getNowDate()
+        val editor = prefs.edit()
+        editor.putInt("payDay",nowDate)
+        editor.commit()
+    }
+
+    fun isOverPayDay():Boolean{
+        // 超えたかの判定どうするよ
+        val prefs = getSharedPreferences("HMONEY_FILE", Activity.MODE_PRIVATE)
+        val payDay:Int = prefs.getInt("payDay",0)
+        if(payDay < getNowDate) {
+            return true
+        }
+        return false
     }
 }
